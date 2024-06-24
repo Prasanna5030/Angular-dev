@@ -1,0 +1,7 @@
+.navbar{
+    list-style-type: none;
+   
+    flex-direction: row;
+    color: white;
+    background-color: cornflowerblue;
+}
