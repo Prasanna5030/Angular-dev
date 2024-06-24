@@ -1,0 +1,10 @@
+.forms{
+   max-width: 400px;
+    margin: auto;
+}
+
+.form-end{
+    display: flex;
+    justify-content: space-between;
+}
+

@@ -1,0 +1,77 @@
+<div class=" forms">
+<h1 class ="text-center m-5 "> User-Registration form</h1>
+
+<form [formGroup]="userRegForm" class="form-group" (ngSubmit)="onSubmit()">
+   
+   
+    <div class="flex flex-row">
+        <label for="FirstName">FirstName</label>
+        <input type="text" class="form-control" id="firstname" formControlName="firstName">
+        
+        <div class="text-danger text-right" *ngIf="userRegForm.get('firstName').touched && userRegForm.get('firstName').invalid || submitted && userRegForm.get('firstName').invalid" >
+           <div *ngIf="userRegForm.get('firstName').errors.required">
+            <small>firstname is required</small>
+              </div> 
+           </div>
+    </div>
+    
+    <div class="">
+        <label for="lastname">LastName</label>
+        <input type="text" class="form-control" id="lastname" formControlName="lastName" >
+        <div class="text-danger text-right" *ngIf="userRegForm.get('lastName').touched && userRegForm.get('lastName').invalid || submitted && userRegForm.get('lastName').invalid">
+            <div *ngIf="userRegForm.get('lastName').errors.required">
+               <small>lastname is required</small>
+            </div>
+        </div>
+    
+    </div>
+
+    <div >
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="Email" formControlName="email" >
+        <div class="text-danger" *ngIf="userRegForm.get('email').touched && userRegForm.get('email').invalid || submitted && userRegForm.get('email').invalid">
+           <div *ngIf="userRegForm.get('email').errors.email">
+            <small> Invalid email</small>
+           </div>
+           <div *ngIf="userRegForm.get('email').errors.required">
+            <small> email is required</small>
+           </div>
+        </div>
+    </div>
+
+    <div >
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="Password" formControlName="password" >
+        <div class="text-danger" *ngIf="userRegForm.get('password').touched && userRegForm.get('password').invalid || submitted && userRegForm.get('password').invalid" >
+            <div *ngIf="userRegForm.get('password').errors.required">
+               <small> password is required</small>
+            </div>
+            <div *ngIf="userRegForm.get('password').errors.minlength">
+            <small>     password must be 8 charecters long</small>
+             </div>
+        </div>
+    
+    </div>
+
+    <div >
+        <label for="confirmpassword">Confirm Password</label>
+        <input type="password" class="form-control" id="Confirm Password" formControlName="confirmPassword" >
+        <div class=" text-danger" *ngIf="userRegForm.get('confirmPassword').touched && userRegForm.get('confirmPassword').invalid || submitted && userRegForm.get('confirmPassword').invalid" >
+            <div *ngIf="userRegForm.get('confirmPassword').errors.required">
+             <small>  confirm password is required</small>
+            </div>
+            
+        </div>
+        <div class="text-danger" *ngIf="submitted  && userRegForm.errors?.['passwordNotMatch']">
+           <small> passwords must be same</small>
+         </div>
+    </div>
+
+    <div class="form-end mt-2">
+        
+    <button type ="submit" class="btn btn-primary" > Submit</button>
+    <button type="button" class="btn btn-warning" (click)="reset()"> Reset </button>
+    </div>
+</form>
+
+</div>
